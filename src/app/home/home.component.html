@@ -6,7 +6,7 @@
   <section class="quiz-options">
     <div class="option-group">
         <label for="category">Category:</label>
-        <select id="category" class="quiz-select">
+        <select id="category" class="quiz-select" (change)="onCategoryChange($event)">
             <option value="">Any Category</option>
             <option value="general">General Knowledge</option>
             <option value="science">Science</option>
@@ -17,7 +17,7 @@
     </div>
     <div class="option-group">
         <label for="difficulty">Difficulty:</label>
-        <select id="difficulty" class="quiz-select">
+        <select id="difficulty" class="quiz-select" (change)="onDifficultyChange($event)">
             <option value="">Any Difficulty</option>
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
@@ -25,5 +25,5 @@
         </select>
     </div>
   </section>
-  <button class="start-button">Start</button>
+  <a class="start-button" (click)="startQuiz()">Start</a>
 </main>

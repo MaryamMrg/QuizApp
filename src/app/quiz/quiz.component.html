@@ -1,0 +1,44 @@
+<div class="quiz-container">
+    <h2>Quiz Questions</h2>
+    
+    @if (loading) {
+      <div>Loading quizzes...</div>
+    }
+    
+    @if (error) {
+      <div>{{ error }}</div>
+      <button (click)="loadQuizzes()">Retry</button>
+    }
+  
+    @if (!loading && !error) {
+      @for (quiz of quizzes; track quiz) {
+        <div class="quiz-item">
+          <h3>{{ quiz.question }}</h3>
+          <ul>
+            @for (option of getOptions(quiz); track option) {
+              <li 
+                [class.selected]="quiz.selectedAnswer === option"
+                [class.correct]="showResults && option === quiz.correct_answer"
+                [class.incorrect]="showResults && quiz.selectedAnswer === option && quiz.selectedAnswer !== quiz.correct_answer"
+                (click)="selectAnswer(quiz, option)">
+                {{ option }}
+              </li>
+            }
+          </ul>
+          @if (showResults) {
+            <div class="feedback" [class.correct]="quiz.isCorrect" [class.incorrect]="!quiz.isCorrect">
+              @if (quiz.isCorrect) {
+                ✓ Correct!
+              } @else {
+                ✗ Incorrect! The correct answer is: {{ quiz.correct_answer }}
+              }
+            </div>
+          }
+        </div>
+      }
+  
+      <button class="submit-button" (click)="submitQuiz()" >
+        Submit Answers
+      </button>
+    }
+  </div>
