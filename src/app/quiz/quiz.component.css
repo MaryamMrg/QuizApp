@@ -146,3 +146,29 @@
     background-color: #b39ddb;
     cursor: not-allowed;
   }
+  .score-display {
+    text-align: center;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f3e5f5;
+    border-radius: 8px;
+  }
+  
+  .score-display h3 {
+    color: #6a21a8;
+    margin-bottom: 10px;
+  }
+  
+  .restart-button {
+    background-color: #6a21a8;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .restart-button:hover {
+    background-color: #4a148c;
+  }

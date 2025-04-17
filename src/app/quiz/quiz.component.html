@@ -37,8 +37,22 @@
         </div>
       }
   
-      <button class="submit-button" (click)="submitQuiz()" >
+      <!-- <button class="submit-button" (click)="submitQuiz()" >
         Submit Answers
-      </button>
+      </button> -->
     }
+    
+@if (showScore) {
+    <div class="score-display">
+      <h3>Your Score: {{ score }}/{{ totalQuestion }}</h3>
+      <p>{{ getScoreMessage() }}</p>
+      <button class="restart-button" (click)="restartQuiz()">Try Again</button>
+    </div>
+  }
+  
+  <button class="submit-button" 
+          (click)="submitQuiz()" 
+          >
+    @if (showResults) { Answers Submitted } @else { Submit Answers }
+  </button>
   </div>
